@@ -1,10 +1,14 @@
 package main
 
 import (
-	"os"
-	"net/http"
+	"strings"
+	"fmt"
 	"io"
+	"net/http"
+	"time"
+	"strconv"
 	"log"
+	"os"
 
 	"github.com/Iilun/survey/v2"
 )
@@ -24,6 +28,8 @@ var (
 	// License specific variables.
 	addLicense  bool
 	licenseType string
+	licenseHolder string
+	licenserEmail string
 )
 
 func main() {
@@ -83,10 +89,17 @@ func main() {
 				"gpl-3.0",
 				"lgpl-3.0",
 				"isc",
+				"mit",
 				"mpl-2.0",
 				"unlicense",
 			},
 		}, &licenseType)
+		survey.AskOne(&survey.Input{
+			Message: "What should the copyright holder's name be?",
+		}, &licenseHolder)
+		survey.AskOne(&survey.Input{
+			Message: "What should the copyright holder's email be?",
+		}, &licenserEmail)
 	}
 
 	// Add robots.txt?
@@ -95,49 +108,61 @@ func main() {
 	// yes -> which language? (bun, go, cargo, node, zig, py, c, etc)
 
 	// This section is for writing files.
+	if usingGit {
+		if err := gitInit(); err != nil {
+			log.Printf("Failed to initialize git: %v\n", err)
+		}
+	}
 	if gitAddIgnore {
 		if err := createGitIgnore(); err != nil {
-			log.Println("Failed to create gitignore: %v\n", err)
+			log.Printf("Failed to create gitignore: %v\n", err)
 		}
 	}
-
 	if gitAddAttributes {
 		if err := createGitAttributes(); err != nil {
-			log.Println("Failed to create gitattributes: %v\n", err)
+			log.Printf("Failed to create gitattributes: %v\n", err)
+		}
+	}
+	if gitAddRemote {
+		if err := createGitRemote(); err != nil {
+			log.Printf("Failed to add git remote: %v\n", err)
+		}
+	}
+
+	if addLicense {
+		if err := createLicense(); err != nil {
+			log.Printf("Failed to create LICENSE: %v\n", err)
 		}
 	}
 }
 
-func createGitIgnore() error {
-	res, err := http.Get("https://www.toptal.com/developers/gitignore/api/"+gitIgnoreTemplates)
+func createLicense() error {
+	res, err := http.Get("https://raw.githubusercontent.com/github/choosealicense.com/refs/heads/gh-pages/_licenses/"+licenseType+".txt")
 	if err != nil {
 		return err
 	}
 	defer res.Body.Close()
+	if res.StatusCode > 299 || res.StatusCode < 200 {
+		return fmt.Errorf("Request failed with status %s", res.StatusCode)
+	}
 
-	f, err := os.Create(".gitignore")
+	f, err := os.Create("LICENSE")
 	if err != nil {
 		return err
 	}
 	defer f.Close()
 
-	_, err = io.Copy(f, res.Body)
-	return err
-}
-
-func createGitAttributes() error {
-	res, err := http.Get("https://gitattributes.com/api/"+gitAttributesTemplates)
+	data, err := io.ReadAll(res.Body)
 	if err != nil {
 		return err
 	}
-	defer res.Body.Close()
 
-	f, err := os.Create(".gitattributes")
-	if err != nil {
-		return err
-	}
-	defer f.Close()
+	text := strings.Split(string(data), "---")[2]
+	text = strings.ReplaceAll(text, "[year]", strconv.Itoa(time.Now().Year()))
+	text = strings.ReplaceAll(text, "[fullname]", licenseHolder)
+	text = strings.ReplaceAll(text, "[email]", licenserEmail)
 
-	_, err = io.Copy(f, res.Body)
+	f.WriteString(text)
+
 	return err
 }
