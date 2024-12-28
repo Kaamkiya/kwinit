@@ -32,6 +32,9 @@ var (
 	readmeInstallCommand string
 	readmeUsageCommand   string
 	readmeAddBadges      bool
+
+	// Miscellaneous other variables.
+	addRobotsTxt bool
 )
 
 func main() {
@@ -120,8 +123,7 @@ func main() {
 		check(survey.AskOne(&survey.Confirm{Message: "Add badges to readme?"}, &readmeAddBadges))
 	}
 
-	// Add robots.txt?
-	// yes -> block what? enter empty line to stop.
+	check(survey.AskOne(&survey.Confirm{Message: "Add robots.txt?"}, &addRobotsTxt))
 	// Add CONTRIBUTING.md?
 	// Add CODE_OF_CONDUCT.md?
 	// Init language project?
@@ -158,6 +160,12 @@ func main() {
 	if addReadme {
 		if err := createReadme(); err != nil {
 			log.Printf("Failed to create README: %v\n", err)
+		}
+	}
+
+	if addRobotsTxt {
+		if err := createRobotsTxt(); err != nil {
+			log.Printf("Failed to create robots.txt: %v\n", err)
 		}
 	}
 }
