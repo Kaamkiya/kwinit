@@ -15,7 +15,7 @@
 
 ## Demo
 
-![An example of kwinit in action](https://vhs.charm.sh/vhs-65KWimTBRlJ5WmgHd1EhVD.gif)
+![An example of kwinit in action](./assets/kwinit.gif)
 
 ## Installation
 
