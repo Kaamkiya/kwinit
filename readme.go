@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"net/url"
 	"os"
 )
 
@@ -37,7 +38,7 @@ func createReadme() error {
 		if readmeWebsiteURL != "" {
 			readme += fmt.Sprintf(
 				"\n[![Website](%s)](%s)",
-				badgeURL+"website/?url="+readmeWebsiteURL,
+				badgeURL+"website/?url="+url.QueryEscape(readmeWebsiteURL),
 				readmeWebsiteURL,
 			)
 		}
