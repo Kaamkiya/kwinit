@@ -47,6 +47,8 @@ If you found a bug, feel free to create and
   - Go
   - Zig
   - Python
+- Readme generator
+- Spinner while waiting
 
 ## Contributing
 
@@ -59,8 +61,7 @@ request, please make an issue first and I'll assign it to you.
 
 ## Acknowledgements
 
-A big thanks to all the [Charm](https://charm.sh) libraries for their
-incredible ease of use and functionality.
+Thanks to [Iilun](https://github.com/Iilun/survey) for their prompting library.
 
 ## License
 
