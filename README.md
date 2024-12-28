@@ -53,6 +53,8 @@ If you found a bug, feel free to create and
 - Code of conduct generator
 - Issue templates
 - Pull request templates
+- Robots.txt generator
+- editorconfig generator
 
 ## Contributing
 
