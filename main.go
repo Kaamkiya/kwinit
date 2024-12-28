@@ -25,13 +25,13 @@ var (
 	licenserEmail string
 
 	// Readme specific variables.
-	addReadme         bool
-	readmeDescription string
-	readmeDocsURL     string
-	readmeWebsiteURL  string
+	addReadme            bool
+	readmeDescription    string
+	readmeDocsURL        string
+	readmeWebsiteURL     string
 	readmeInstallCommand string
-	readmeUsageCommand string
-	readmeAddBadges   bool
+	readmeUsageCommand   string
+	readmeAddBadges      bool
 )
 
 func main() {
