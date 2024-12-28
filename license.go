@@ -17,7 +17,7 @@ func createLicense() error {
 	}
 	defer res.Body.Close()
 	if res.StatusCode > 299 || res.StatusCode < 200 {
-		return fmt.Errorf("Request failed with status %s", res.StatusCode)
+		return fmt.Errorf("Request failed with status %d", res.StatusCode)
 	}
 
 	f, err := os.Create("LICENSE")
