@@ -15,7 +15,7 @@ func gitInit() error {
 }
 
 func createGitIgnore() error {
-	res, err := http.Get("https://www.toptal.com/developers/gitignore/api/" + gitIgnoreTemplates)
+	res, err := http.Get("https://www.toptal.com/developers/gitignore/api/" + strings.Join(gitIgnoreTemplates, ","))
 	if err != nil {
 		return err
 	}
