@@ -23,6 +23,15 @@ var (
 	licenseType   string
 	licenseHolder string
 	licenserEmail string
+
+	// Readme specific variables.
+	addReadme         bool
+	readmeDescription string
+	readmeDocsURL     string
+	readmeWebsiteURL  string
+	readmeInstallCommand string
+	readmeUsageCommand string
+	readmeAddBadges   bool
 )
 
 func main() {
@@ -100,6 +109,17 @@ func main() {
 		check(err)
 	}
 
+	err = survey.AskOne(&survey.Confirm{Message: "Add readme?"}, &addReadme)
+	check(err)
+	if addReadme {
+		check(survey.AskOne(&survey.Input{Message: "Project description"}, &readmeDescription))
+		check(survey.AskOne(&survey.Input{Message: "Documentation URL (blank to skip)"}, &readmeDocsURL))
+		check(survey.AskOne(&survey.Input{Message: "Website (blank to skip)"}, &readmeWebsiteURL))
+		check(survey.AskOne(&survey.Input{Message: "Installation command? (blank to skip?)"}, &readmeInstallCommand))
+		check(survey.AskOne(&survey.Input{Message: "Usage command? (blank to skip?)"}, &readmeUsageCommand))
+		check(survey.AskOne(&survey.Confirm{Message: "Add badges to readme?"}, &readmeAddBadges))
+	}
+
 	// Add robots.txt?
 	// yes -> block what? enter empty line to stop.
 	// Add CONTRIBUTING.md?
@@ -132,6 +152,12 @@ func main() {
 	if addLicense {
 		if err := createLicense(); err != nil {
 			log.Printf("Failed to create LICENSE: %v\n", err)
+		}
+	}
+
+	if addReadme {
+		if err := createReadme(); err != nil {
+			log.Printf("Failed to create README: %v\n", err)
 		}
 	}
 }
