@@ -49,6 +49,8 @@ If you found a bug, feel free to create and
   - Python
 - Readme generator
 - Spinner while waiting
+- Gitignore templates as `survey.Select`
+- Gitattributes templates as `survey.Select`
 
 ## Contributing
 
@@ -61,7 +63,11 @@ request, please make an issue first and I'll assign it to you.
 
 ## Acknowledgements
 
-Thanks to [Iilun](https://github.com/Iilun/survey) for their prompting library.
+Thanks to...
+
+* [Iilun](https://github.com/Iilun/survey) for their prompting library
+* [gitattributes/gitattributes](https://github.com/gitattributes/gitattributes)
+  for the `.gitattributes` templates
 
 ## License
 
