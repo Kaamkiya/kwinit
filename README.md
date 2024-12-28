@@ -15,7 +15,7 @@
 
 ## Demo
 
-Insert a gif here
+![An example of kwinit in action](https://vhs.charm.sh/vhs-65KWimTBRlJ5WmgHd1EhVD.gif)
 
 ## Installation
 
@@ -69,10 +69,10 @@ request, please make an issue first and I'll assign it to you.
 
 Thanks to...
 
-* [Iilun](https://github.com/Iilun/survey) for their prompting library
-* [gitattributes/gitattributes](https://github.com/gitattributes/gitattributes)
+- [Iilun](https://github.com/Iilun/survey) for their prompting library
+- [gitattributes/gitattributes](https://github.com/gitattributes/gitattributes)
   for the `.gitattributes` templates
-* [Toptal](https://github.com/toptal) for [gitignore.io](https://gitignore.io)
+- [Toptal](https://github.com/toptal) for [gitignore.io](https://gitignore.io)
 
 ## License
 
