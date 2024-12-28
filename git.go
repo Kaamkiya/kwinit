@@ -10,7 +10,6 @@ import (
 
 func gitInit() error {
 	cmd := exec.Command("git", "init")
-	cmd.Stdout = os.Stdout
 	return cmd.Run()
 }
 

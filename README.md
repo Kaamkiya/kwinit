@@ -50,7 +50,6 @@ If you found a bug, feel free to create and
   - Go
   - Zig
   - Python
-- Spinner while waiting
 - Contributing.md generator
 - Code of conduct generator
 - Issue templates

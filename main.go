@@ -2,8 +2,10 @@ package main
 
 import (
 	"log"
+	"time"
 
 	"github.com/Iilun/survey/v2"
+	"github.com/briandowns/spinner"
 )
 
 var (
@@ -135,44 +137,61 @@ func main() {
 	// yes -> which language? (bun, go, cargo, node, zig, py, c, etc)
 
 	// This section is for writing files.
+	s := spinner.New(spinner.CharSets[14], 100*time.Millisecond)
+	s.Start()
+
 	if usingGit {
+		s.Suffix = " Initializing Git..."
 		if err := gitInit(); err != nil {
 			log.Printf("Failed to initialize git: %v\n", err)
 		}
-	}
-	if gitAddIgnore {
-		if err := createGitIgnore(); err != nil {
-			log.Printf("Failed to create gitignore: %v\n", err)
+
+		s.Suffix = " Making .gitignore..."
+		if gitAddIgnore {
+			if err := createGitIgnore(); err != nil {
+				log.Printf("Failed to create gitignore: %v\n", err)
+			}
 		}
-	}
-	if gitAddAttributes {
-		if err := createGitAttributes(); err != nil {
-			log.Printf("Failed to create gitattributes: %v\n", err)
+
+		s.Suffix = " Making .gitattributes..."
+		if gitAddAttributes {
+			if err := createGitAttributes(); err != nil {
+				log.Printf("Failed to create gitattributes: %v\n", err)
+			}
 		}
-	}
-	if gitAddRemote {
-		if err := createGitRemote(); err != nil {
-			log.Printf("Failed to add git remote: %v\n", err)
+
+		s.Suffix = " Adding git remote..."
+		if gitAddRemote {
+			if err := createGitRemote(); err != nil {
+				log.Printf("Failed to add git remote: %v\n", err)
+			}
 		}
 	}
 
 	if addLicense {
+		s.Suffix = " Making LICENSE..."
+
 		if err := createLicense(); err != nil {
 			log.Printf("Failed to create LICENSE: %v\n", err)
 		}
 	}
 
 	if addReadme {
+		s.Suffix = " Making README..."
+
 		if err := createReadme(); err != nil {
 			log.Printf("Failed to create README: %v\n", err)
 		}
 	}
 
 	if addRobotsTxt {
+		s.Suffix = " Making robots.txt..."
 		if err := createRobotsTxt(); err != nil {
 			log.Printf("Failed to create robots.txt: %v\n", err)
 		}
 	}
+
+	s.Stop()
 }
 
 func check(err error) {
