@@ -38,7 +38,12 @@ var (
 )
 
 func main() {
-	err := survey.AskOne(&survey.Input{Message: "What's your project's name?"}, &projectName)
+	err := initData()
+	if err != nil {
+		panic(err)
+	}
+
+	err = survey.AskOne(&survey.Input{Message: "What's your project's name?"}, &projectName)
 	check(err)
 
 	// The following questions are whether ot not the user is using Git and other Git-specific questions.
