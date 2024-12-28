@@ -36,7 +36,6 @@ func createLicense() error {
 	text = strings.ReplaceAll(text, "[fullname]", licenseHolder)
 	text = strings.ReplaceAll(text, "[email]", licenserEmail)
 
-	f.WriteString(text)
-
+	_, err = f.WriteString(text)
 	return err
 }

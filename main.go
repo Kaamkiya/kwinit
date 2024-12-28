@@ -26,64 +26,84 @@ var (
 )
 
 func main() {
-	survey.AskOne(&survey.Input{Message: "What's your project's name?"}, &projectName)
+	err := survey.AskOne(&survey.Input{Message: "What's your project's name?"}, &projectName)
+	check(err)
 
 	// The following questions are whether ot not the user is using Git and other Git-specific questions.
-	survey.AskOne(&survey.Confirm{
+	err = survey.AskOne(&survey.Confirm{
 		Message: "Are you using Git?",
 		Default: true,
 	}, &usingGit)
+	check(err)
+
 	if usingGit {
-		survey.AskOne(&survey.Confirm{
+		err = survey.AskOne(&survey.Confirm{
 			Message: "Add a remote?",
 			Default: false,
 		}, &gitAddRemote)
+		check(err)
+
 		if gitAddRemote {
-			survey.AskOne(&survey.Input{
+			err = survey.AskOne(&survey.Input{
 				Message: "Where are you hosting your project? Enter the full URL:",
 			}, &gitRemoteAddr)
+			check(err)
 		}
 
-		survey.AskOne(&survey.Confirm{
+		err = survey.AskOne(&survey.Confirm{
 			Message: "Add .gitignore?",
 			Default: true,
 		}, &gitAddIgnore)
+		check(err)
+
 		if gitAddIgnore {
-			survey.AskOne(&survey.MultiSelect{
+			err = survey.AskOne(&survey.MultiSelect{
 				Message: "Which templates?",
 				Options: gitignoreList,
 			}, &gitIgnoreTemplates)
+			check(err)
 		}
 
-		survey.AskOne(&survey.Confirm{
+		err = survey.AskOne(&survey.Confirm{
 			Message: "Add .gitattributes?",
 			Default: true,
 		}, &gitAddAttributes)
+		check(err)
+
 		if gitAddAttributes {
-			survey.AskOne(&survey.MultiSelect{
+			err = survey.AskOne(&survey.MultiSelect{
 				Message: "Which templates?",
 				Options: gitattributesList,
 			}, &gitAttributesTemplates)
+			check(err)
 		}
 	}
 
 	// The following questions are about licenses.
-	survey.AskOne(&survey.Confirm{Message: "Add license?"}, &addLicense)
+	err = survey.AskOne(&survey.Confirm{Message: "Add license?"}, &addLicense)
+	check(err)
 	if addLicense {
-		survey.AskOne(&survey.Select{
+		err = survey.AskOne(&survey.Select{
 			Message: "Which license would you like to add?",
 			Options: licenseList,
 		}, &licenseType)
-		survey.AskOne(&survey.Input{
+		check(err)
+
+		err = survey.AskOne(&survey.Input{
 			Message: "What should the copyright holder's name be?",
 		}, &licenseHolder)
-		survey.AskOne(&survey.Input{
+		check(err)
+
+		err = survey.AskOne(&survey.Input{
 			Message: "What should the copyright holder's email be?",
 		}, &licenserEmail)
+		check(err)
 	}
 
 	// Add robots.txt?
 	// yes -> block what? enter empty line to stop.
+	// Add CONTRIBUTING.md?
+	// Add CODE_OF_CONDUCT.md?
 	// Init language project?
 	// yes -> which language? (bun, go, cargo, node, zig, py, c, etc)
 
@@ -113,5 +133,11 @@ func main() {
 		if err := createLicense(); err != nil {
 			log.Printf("Failed to create LICENSE: %v\n", err)
 		}
+	}
+}
+
+func check(err error) {
+	if err != nil {
+		log.Printf("Error: %v\n", err)
 	}
 }
