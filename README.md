@@ -50,7 +50,6 @@ If you found a bug, feel free to create and
   - Go
   - Zig
   - Python
-- Readme generator
 - Spinner while waiting
 - Contributing.md generator
 - Code of conduct generator
@@ -76,6 +75,8 @@ Thanks to...
 - [gitattributes/gitattributes](https://github.com/gitattributes/gitattributes)
   for the `.gitattributes` templates
 - [Toptal](https://github.com/toptal) for [gitignore.io](https://gitignore.io)
+- [ai-robots-txt](https://github.com/ai-robots-txt) for the list of AI web
+  crawlers (for robots.txt)
 
 ## License
 
