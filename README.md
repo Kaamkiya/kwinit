@@ -56,6 +56,7 @@ If you found a bug, feel free to create and
 - Issue templates
 - Pull request templates
 - editorconfig generator
+  (see https://github.com/editorconfig/editorconfig-defaults)
 - Flags to fill out variables without the input interface
 
 ## Contributing
