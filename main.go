@@ -19,8 +19,8 @@ var (
 	gitAttributesTemplates string
 
 	// License specific variables.
-	addLicense  bool
-	licenseType string
+	addLicense    bool
+	licenseType   string
 	licenseHolder string
 	licenserEmail string
 )

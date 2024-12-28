@@ -1,10 +1,10 @@
 package main
 
 import (
+	"io"
+	"net/http"
 	"os"
 	"os/exec"
-	"net/http"
-	"io"
 )
 
 func gitInit() error {
@@ -14,7 +14,7 @@ func gitInit() error {
 }
 
 func createGitIgnore() error {
-	res, err := http.Get("https://www.toptal.com/developers/gitignore/api/"+gitIgnoreTemplates)
+	res, err := http.Get("https://www.toptal.com/developers/gitignore/api/" + gitIgnoreTemplates)
 	if err != nil {
 		return err
 	}
@@ -31,7 +31,7 @@ func createGitIgnore() error {
 }
 
 func createGitAttributes() error {
-	res, err := http.Get("https://gitattributes.com/api/"+gitAttributesTemplates)
+	res, err := http.Get("https://gitattributes.com/api/" + gitAttributesTemplates)
 	if err != nil {
 		return err
 	}

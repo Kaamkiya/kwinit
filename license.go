@@ -1,17 +1,17 @@
 package main
 
 import (
-	"strconv"
-	"time"
-	"net/http"
 	"fmt"
 	"io"
+	"net/http"
 	"os"
+	"strconv"
 	"strings"
+	"time"
 )
 
 func createLicense() error {
-	res, err := http.Get("https://raw.githubusercontent.com/github/choosealicense.com/refs/heads/gh-pages/_licenses/"+licenseType+".txt")
+	res, err := http.Get("https://raw.githubusercontent.com/github/choosealicense.com/refs/heads/gh-pages/_licenses/" + licenseType + ".txt")
 	if err != nil {
 		return err
 	}
