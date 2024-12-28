@@ -28,7 +28,7 @@ var (
 func main() {
 	survey.AskOne(&survey.Input{Message: "What's your project's name?"}, &projectName)
 
-	// The following questions are whther ot not the user is using Git and other Git-specific questions.
+	// The following questions are whether ot not the user is using Git and other Git-specific questions.
 	survey.AskOne(&survey.Confirm{
 		Message: "Are you using Git?",
 		Default: true,
