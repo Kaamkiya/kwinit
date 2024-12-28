@@ -1,10 +1,10 @@
 package main
 
 import (
-	"io"
 	"fmt"
-	"os"
+	"io"
 	"net/http"
+	"os"
 )
 
 func createRobotsTxt() error {
@@ -17,7 +17,7 @@ func createRobotsTxt() error {
 		return fmt.Errorf("failed with status %d", res.StatusCode)
 	}
 
-	f,err := os.Create("robots.txt")
+	f, err := os.Create("robots.txt")
 	if err != nil {
 		return err
 	}
