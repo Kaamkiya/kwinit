@@ -11,6 +11,9 @@
   <a href="https://github.com/Kaamkiya/kwinit/actions/workflows/golangci-lint.yml">
     <img src="https://github.com/Kaamkiya/kwinit/actions/workflows/golangci-lint.yml/badge.svg" alt="Linter" />
   </a>
+  <a href="">
+    <img src="https://img.shields.io/endpoint?url=https://ghloc.vercel.app/api/Kaamkiya/kwinit/badge&label=loc&color=yellow" alt="lines of code" />
+  </a>
 </p>
 
 ## Demo
