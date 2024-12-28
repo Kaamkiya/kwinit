@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"strings"
 )
 
 func gitInit() error {
@@ -31,7 +32,7 @@ func createGitIgnore() error {
 }
 
 func createGitAttributes() error {
-	res, err := http.Get("https://gitattributes.com/api/" + gitAttributesTemplates)
+	res, err := http.Get("https://gitattributes.com/api/" + strings.Join(gitAttributesTemplates, "%2C"))
 	if err != nil {
 		return err
 	}

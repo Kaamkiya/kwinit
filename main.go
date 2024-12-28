@@ -16,7 +16,7 @@ var (
 	gitAddIgnore           bool
 	gitIgnoreTemplates     string
 	gitAddAttributes       bool
-	gitAttributesTemplates string
+	gitAttributesTemplates []string
 
 	// License specific variables.
 	addLicense    bool
@@ -59,8 +59,51 @@ func main() {
 			Default: true,
 		}, &gitAddAttributes)
 		if gitAddAttributes {
-			survey.AskOne(&survey.Input{
+			survey.AskOne(&survey.MultiSelect{
 				Message: "Which templates?",
+				Options: []string{
+					"actionscript",
+					"ada",
+					"ballerina",
+					"c++",
+					"csharp",
+					"common",
+					"deplhi",
+					"drupal",
+					"dyalogapl",
+					"elixir",
+					"flutter",
+					"fortran",
+					"fountain",
+					"fsharp",
+					"go",
+					"hashicorp",
+					"java",
+					"lua",
+					"markdown",
+					"mathematica",
+					"matlab",
+					"microsoftshell",
+					"objectivec",
+					"php",
+					"pascal",
+					"perl",
+					"powershell",
+					"python",
+					"r",
+					"rails",
+					"ruby",
+					"servoy",
+					"swift",
+					"sql",
+					"tinacms",
+					"unity",
+					"vim",
+					"web",
+					"devcontainer",
+					"visualstudio",
+					"visualstudiocode",
+				},
 			}, &gitAttributesTemplates)
 		}
 	}
