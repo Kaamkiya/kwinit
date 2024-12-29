@@ -57,4 +57,3 @@ func createPullRequestTemplate() error {
 	_, err = pullRequestFile.Write(pullRequestTemplate)
 	return err
 }
-

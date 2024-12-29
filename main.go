@@ -35,9 +35,13 @@ var (
 	readmeUsageCommand   string
 	readmeAddBadges      bool
 
+	// Language project specific variables.
+	initLanguage    bool
+	languageProject string
+
 	// Miscellaneous other variables.
-	addRobotsTxt      bool
-	addIssueTemplates bool
+	addRobotsTxt           bool
+	addIssueTemplates      bool
 	addPullRequestTemplate bool
 )
 
@@ -138,7 +142,19 @@ func main() {
 	check(survey.AskOne(&survey.Confirm{Message: "Add pull request template?"}, &addPullRequestTemplate))
 	// Add CONTRIBUTING.md?
 	// Add CODE_OF_CONDUCT.md?
+
 	// Init language project?
+	check(survey.AskOne(&survey.Confirm{Message: "Init language project?"}, &initLanguage))
+	if initLanguage {
+		err = survey.AskOne(
+			&survey.Select{
+				Message: "Select the language",
+				Options: languageList,
+			},
+			&languageProject,
+		)
+		check(err)
+	}
 	// yes -> which language? (bun, go, cargo, node, zig, py, c, etc)
 
 	// This section is for writing files.
@@ -208,6 +224,17 @@ func main() {
 		if err := createPullRequestTemplate(); err != nil {
 			log.Printf("Failed to add PR template: %v\n", err)
 		}
+	}
+
+	if initLanguage {
+		// This prevents the spinner from interfering with any
+		// inputs we may need to take.
+		s.Stop()
+		if err := createLanguageProject(); err != nil {
+			log.Printf("Failed to initialize language project: %v\n", err)
+		}
+		s.Start()
+		s.Suffix = " Initializing language project..."
 	}
 
 	s.Stop()
