@@ -52,7 +52,6 @@ If you found a bug, feel free to create and
   - Python
 - Contributing.md generator
 - Code of conduct generator
-- Issue templates
 - Pull request templates
 - editorconfig generator
   (see https://github.com/editorconfig/editorconfig-defaults)
