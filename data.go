@@ -10,9 +10,9 @@ import (
 var rawData []byte
 
 var (
-	gitignoreList []string
+	gitignoreList     []string
 	gitattributesList []string
-	licenseList []string
+	licenseList       []string
 )
 
 func initData() error {

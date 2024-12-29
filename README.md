@@ -63,6 +63,8 @@ If you found a bug, feel free to create and
 All types of contributions are welcome! If you would like to make a pull
 request, please make an issue first and I'll assign it to you.
 
+Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before contributing.
+
 ## Authors
 
 - [Kaamkiya](https://github.com/Kaamkiya)
