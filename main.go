@@ -36,7 +36,8 @@ var (
 	readmeAddBadges      bool
 
 	// Miscellaneous other variables.
-	addRobotsTxt bool
+	addRobotsTxt      bool
+	addIssueTemplates bool
 )
 
 func main() {
@@ -131,6 +132,7 @@ func main() {
 	}
 
 	check(survey.AskOne(&survey.Confirm{Message: "Add robots.txt?"}, &addRobotsTxt))
+	check(survey.AskOne(&survey.Confirm{Message: "Add issue templates?"}, &addIssueTemplates))
 	// Add CONTRIBUTING.md?
 	// Add CODE_OF_CONDUCT.md?
 	// Init language project?
@@ -188,6 +190,13 @@ func main() {
 		s.Suffix = " Making robots.txt..."
 		if err := createRobotsTxt(); err != nil {
 			log.Printf("Failed to create robots.txt: %v\n", err)
+		}
+	}
+
+	if addIssueTemplates {
+		s.Suffix = " Adding issue templates..."
+		if err := createIssueTemplates(); err != nil {
+			log.Printf("Failed to add issue templates: %v\n", err)
 		}
 	}
 
