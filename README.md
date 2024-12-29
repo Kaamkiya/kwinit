@@ -43,12 +43,9 @@ If you found a bug, feel free to create and
 ## Roadmap
 
 - Project initialization for more systems
-  - Bun
   - Deno
   - NodeJS
   - Cargo
-  - Go
-  - Zig
   - Python
 - Contributing.md generator
 - Code of conduct generator
@@ -62,6 +59,10 @@ All types of contributions are welcome! If you would like to make a pull
 request, please make an issue first and I'll assign it to you.
 
 Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before contributing.
+
+Note: if you want to contribute but don't know where to start, you may want to
+consider adding a language creator. For example, you could add the code that
+can create a new Gradle project, or something similar.
 
 ## Authors
 
