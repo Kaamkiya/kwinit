@@ -16,11 +16,14 @@ Type "https://git.example.blue/blue/blue" Sleep 200ms Enter
 Type "y" Sleep 400ms Enter
 Down@350ms 12
 Up@350ms 5
-Type "blue " Sleep 200ms Enter
+Type "go" Sleep 400ms
+Up@350ms 6
+Type " " Sleep 400ms Enter
 Type "y" Sleep 400ms Enter
-Down@350ms 7
+Down@350ms 6
 Up@350ms 1
 Type " " Sleep 200ms Enter
+Type "g " Sleep 400ms Enter
 Type "y" Sleep 400ms Enter
 Type@400ms "unl" Sleep 200ms Enter
 Type "blue-org" Sleep 200ms Enter
@@ -33,6 +36,7 @@ Type "fake-pm install blue" Sleep 200ms Enter
 Type "blue --help" Sleep 200ms Enter
 Type "y" Sleep 400ms Enter
 Type "n" Sleep 400ms Enter
+Type "y" Sleep 400ms Enter
 Type "y" Sleep 400ms Enter
 Type "y" Sleep 400ms Enter
 Sleep 3s

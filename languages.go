@@ -8,6 +8,7 @@ import (
 
 var languageList = []string{
 	"bun",
+	"deno",
 	"go",
 	"zig",
 }
@@ -27,6 +28,8 @@ func createLanguageProject() error {
 		// --yes accepts all defaults, which is needed to avoid
 		// interrupting the program.
 		cmd = exec.Command("bun", "init", "--yes")
+	case "deno":
+		cmd = exec.Command("deno", "init")
 	case "go":
 		var packageName string
 
