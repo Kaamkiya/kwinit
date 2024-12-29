@@ -15,6 +15,10 @@ var languageList = []string{
 func createLanguageProject() error {
 	var cmd *exec.Cmd
 
+	// NOTE: if you contribute to this, the case statements must be in
+	// alphabetical order. If they are out of order, I will request a
+	// change.
+
 	switch languageProject {
 	case "c":
 		// generate makefile
