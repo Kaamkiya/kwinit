@@ -32,6 +32,10 @@ Type "https://example.blue" Sleep 200ms Enter
 Type "fake-pm install blue" Sleep 200ms Enter
 Type "blue --help" Sleep 200ms Enter
 Type "y" Sleep 400ms Enter
+Type "n" Sleep 400ms Enter
+Type "y" Sleep 400ms Enter
+Type "y" Sleep 400ms Enter
+Sleep 3s
 Type "ls -a" Sleep 200ms Enter
 
 Sleep 5s
