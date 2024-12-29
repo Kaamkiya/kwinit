@@ -1,5 +1,5 @@
 <h1 align=center>kwinit</h1>
-<p align=center>Quickly and easily generate common files for your project.</p>
+<p align=center>Quickstart all your projects with ease</p>
 
 <p align=center>
   <a href="LICENSE">
