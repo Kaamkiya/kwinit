@@ -13,6 +13,9 @@ var bugReportTemplate []byte
 //go:embed .github/ISSUE_TEMPLATE/feature_request.md
 var featureRequestTemplate []byte
 
+//go:embed .github/pull_request_template.md
+var pullRequestTemplate []byte
+
 func createIssueTemplates() error {
 	issueTemplateDir := filepath.Join(".github", "ISSUE_TEMPLATE")
 
@@ -39,3 +42,19 @@ func createIssueTemplates() error {
 	_, err = featureRequestFile.Write(featureRequestTemplate)
 	return err
 }
+
+func createPullRequestTemplate() error {
+	err := os.MkdirAll(".github", os.ModePerm)
+	if err != nil {
+		return err
+	}
+
+	pullRequestFile, err := os.Create(filepath.Join(".github", "pull_request_template.md"))
+	if err != nil {
+		return err
+	}
+
+	_, err = pullRequestFile.Write(pullRequestTemplate)
+	return err
+}
+

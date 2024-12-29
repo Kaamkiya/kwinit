@@ -38,6 +38,7 @@ var (
 	// Miscellaneous other variables.
 	addRobotsTxt      bool
 	addIssueTemplates bool
+	addPullRequestTemplate bool
 )
 
 func main() {
@@ -132,7 +133,9 @@ func main() {
 	}
 
 	check(survey.AskOne(&survey.Confirm{Message: "Add robots.txt?"}, &addRobotsTxt))
+
 	check(survey.AskOne(&survey.Confirm{Message: "Add issue templates?"}, &addIssueTemplates))
+	check(survey.AskOne(&survey.Confirm{Message: "Add pull request template?"}, &addPullRequestTemplate))
 	// Add CONTRIBUTING.md?
 	// Add CODE_OF_CONDUCT.md?
 	// Init language project?
@@ -197,6 +200,13 @@ func main() {
 		s.Suffix = " Adding issue templates..."
 		if err := createIssueTemplates(); err != nil {
 			log.Printf("Failed to add issue templates: %v\n", err)
+		}
+	}
+
+	if addPullRequestTemplate {
+		s.Suffix = " Adding pull request template..."
+		if err := createPullRequestTemplate(); err != nil {
+			log.Printf("Failed to add PR template: %v\n", err)
 		}
 	}
 
