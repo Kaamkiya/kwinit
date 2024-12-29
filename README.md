@@ -6,7 +6,7 @@
     <img src="https://img.shields.io/badge/License-Unlicense-blue.svg" alt="License: Unlicense" />
   </a>
   <a href="https://goreportcard.com/report/github.com/Kaamkiya/kwinit">
-    <img src="https://goreportcard.com/badge/github.com/Kaamkiya/kwinit" alt="Go Report Card" />
+    <img src="http://goreportcard.com/badge/github.com/Kaamkiya/kwinit" alt="Go Report Card" />
   </a>
   <a href="https://github.com/Kaamkiya/kwinit/actions/workflows/golangci-lint.yml">
     <img src="https://github.com/Kaamkiya/kwinit/actions/workflows/golangci-lint.yml/badge.svg" alt="Linter" />
@@ -43,8 +43,12 @@ If you found a bug, feel free to create and
 ## Roadmap
 
 - Project initialization for more systems
-  - Deno
   - NodeJS
+  - Nim (nimble is the package manager)
+  - C
+  - C++
+  - Crystal
+  - Gradle
   - Cargo
   - Python
 - Contributing.md generator
