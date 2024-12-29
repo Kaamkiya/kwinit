@@ -49,6 +49,8 @@ If you found a bug, feel free to create and
   - C++
   - Crystal
   - Gradle
+  - Dotnet
+  - Dub
   - Cargo
   - Python
 - Contributing.md generator
