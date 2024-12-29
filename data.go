@@ -7,7 +7,7 @@ import (
 )
 
 //go:embed data.json
-var dataJSON []byte
+var rawData []byte
 
 var (
 	gitignoreList []string
@@ -16,13 +16,13 @@ var (
 )
 
 func initData() error {
-	var d map[string][]string
+	var data map[string][]string
 
-	err := json.Unmarshal(dataJSON, &d)
+	err := json.Unmarshal(rawData, &data)
 
-	gitignoreList = d["gitignore"]
-	gitattributesList = d["gitattributes"]
-	licenseList = d["licenses"]
+	gitignoreList = data["gitignore"]
+	gitattributesList = data["gitattributes"]
+	licenseList = data["licenses"]
 
 	return err
 }
