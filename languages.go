@@ -31,14 +31,14 @@ func createLanguageProject() error {
 	case "deno":
 		cmd = exec.Command("deno", "init")
 	case "go":
-		var packageName string
+		var pkgName string
 
-		err := survey.AskOne(&survey.Input{Message: "Package name?"}, &packageName)
+		err := survey.AskOne(&survey.Input{Message: "Package name?"}, &pkgName)
 		if err != nil {
 			return err
 		}
 
-		cmd = exec.Command("go", "mod", "init", packageName)
+		cmd = exec.Command("go", "mod", "init", pkgName)
 	case "zig":
 		cmd = exec.Command("zig", "init")
 	}
