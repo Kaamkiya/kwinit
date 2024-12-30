@@ -50,7 +50,6 @@ If you found a bug, feel free to create and
   - Crystal
   - Gradle
   - Dotnet
-  - Dub
   - Cargo
   - Python
 - Contributing.md generator
@@ -68,7 +67,9 @@ Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before contributing.
 
 Note: if you want to contribute but don't know where to start, you may want to
 consider adding a language creator. For example, you could add the code that
-can create a new Gradle project, or something similar.
+can create a new Gradle project, or something similar. You could also start by
+creating an issue for an item on the roadmap, and then making a pull request to
+have it added.
 
 ## Authors
 

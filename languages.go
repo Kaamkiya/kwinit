@@ -9,6 +9,7 @@ import (
 var languageList = []string{
 	"bun",
 	"deno",
+	"d",
 	"go",
 	"zig",
 }
@@ -30,6 +31,8 @@ func createLanguageProject() error {
 		cmd = exec.Command("bun", "init", "--yes")
 	case "deno":
 		cmd = exec.Command("deno", "init")
+	case "d":
+		cmd = exec.Command("dub", "init")
 	case "go":
 		var pkgName string
 
