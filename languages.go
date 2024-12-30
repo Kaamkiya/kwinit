@@ -7,6 +7,7 @@ import (
 )
 
 var languageList = []string{
+	"Cancel.",
 	"bun",
 	"deno",
 	"d",
@@ -127,6 +128,8 @@ func createLanguageProject() error {
 		)
 	case "zig":
 		cmd = exec.Command("zig", "init")
+	case "Cancel.":
+		return nil
 	}
 
 	return cmd.Run()
