@@ -22,7 +22,7 @@ Type " " Sleep 400ms Enter
 Type "y" Sleep 400ms Enter
 Down@350ms 6
 Up@350ms 1
-Type " " Sleep 200ms Enter
+Type " " Sleep 200ms
 Type "g " Sleep 400ms Enter
 Type "y" Sleep 400ms Enter
 Type@400ms "unl" Sleep 200ms Enter
@@ -39,7 +39,10 @@ Type "n" Sleep 400ms Enter
 Type "y" Sleep 400ms Enter
 Type "y" Sleep 400ms Enter
 Type "y" Sleep 400ms Enter
-Sleep 3s
+Down@350ms 3 Enter
+Sleep 3500ms
+Type "git.example.blue/blue/blue" Sleep 400ms Enter
+Sleep 1s
 Type "ls -a" Sleep 200ms Enter
 
 Sleep 5s
