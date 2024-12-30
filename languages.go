@@ -11,6 +11,7 @@ var languageList = []string{
 	"deno",
 	"d",
 	"go",
+	"gradle",
 	"zig",
 }
 
@@ -42,6 +43,88 @@ func createLanguageProject() error {
 		}
 
 		cmd = exec.Command("go", "mod", "init", pkgName)
+	case "gradle":
+		questions := []*survey.Question{
+			{
+				Name: "projectType",
+				Prompt: &survey.Select{
+					Message: "Library or application?",
+					Options: []string{"library", "application"},
+				},
+			},
+			{
+				Name: "dsl",
+				Prompt: &survey.Select{
+					Message: "Which DSL would you like to use?",
+					Options: []string{"kotlin", "groovy"},
+				},
+			},
+			{
+				Name: "testFramework",
+				Prompt: &survey.Select{
+					Message: "Which test framework do you want?",
+					Options: []string{"junit", "testng", "spock", "junit-jupiter"},
+				},
+			},
+			{
+				Name: "javaVersion",
+				Prompt: &survey.Select{
+					Message: "Which Java version?",
+					// TODO: there must be a better way to do this.
+					Options: []string{
+						"7",
+						"8",
+						"9",
+						"10",
+						"11",
+						"12",
+						"13",
+						"14",
+						"15",
+						"16",
+						"17",
+						"18",
+						"19",
+						"20",
+						"21",
+					},
+				},
+			},
+			{
+				Name: "projectName",
+				Prompt: &survey.Input{
+					Message: "What's your project's name?",
+				},
+			},
+		}
+
+		gradleConfig := struct {
+			ProjectType   string
+			Dsl           string
+			TestFramework string
+			JavaVersion   string
+			ProjectName   string
+		}{}
+
+		err := survey.Ask(questions, &gradleConfig)
+		if err != nil {
+			return err
+		}
+
+		cmd = exec.Command(
+			"gradle",
+			"init",
+			"--type",
+			"java"+gradleConfig.ProjectType,
+			"--dsl",
+			gradleConfig.Dsl,
+			"--test-framework",
+			gradleConfig.TestFramework,
+			"--java-version",
+			gradleConfig.JavaVersion,
+			"--project-name",
+			gradleConfig.ProjectName,
+		)
 	case "zig":
 		cmd = exec.Command("zig", "init")
 	}
