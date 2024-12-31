@@ -45,10 +45,8 @@ If you found a bug, feel free to create and
 - Project initialization for more systems
   - NodeJS
   - Nim (nimble is the package manager)
-  - C
-  - C++
+  - C/C++ (all they really need is a Makefile)
   - Crystal
-  - Gradle
   - Dotnet
   - Cargo
   - Python
