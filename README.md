@@ -51,7 +51,6 @@ If you found a bug, feel free to create and
   - Cargo
   - Python
 - Contributing.md generator
-- Code of conduct generator
 - editorconfig generator
   (see https://github.com/editorconfig/editorconfig-defaults)
 - Flags to fill out variables without the input interface

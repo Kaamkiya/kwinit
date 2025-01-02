@@ -35,6 +35,10 @@ var (
 	readmeUsageCommand   string
 	readmeAddBadges      bool
 
+	// Code of conduct variables.
+	addCOC bool
+	cocContact string
+
 	// Language project specific variables.
 	initLanguage    bool
 	languageProject string
@@ -142,6 +146,8 @@ func main() {
 	check(survey.AskOne(&survey.Confirm{Message: "Add pull request template?"}, &addPullRequestTemplate))
 	// Add CONTRIBUTING.md?
 	// Add CODE_OF_CONDUCT.md?
+	check(survey.AskOne(&survey.Confirm{Message: "Add CODE_OF_CONDUCT.md?"}, &addCOC))
+	check(survey.AskOne(&survey.Input{Message: "Method of contact for code of conduct?"}, &cocContact))
 
 	// Init language project?
 	check(survey.AskOne(&survey.Confirm{Message: "Init language project?"}, &initLanguage))
@@ -223,6 +229,13 @@ func main() {
 		s.Suffix = " Adding pull request template..."
 		if err := createPullRequestTemplate(); err != nil {
 			log.Printf("Failed to add PR template: %v\n", err)
+		}
+	}
+
+	if addCOC {
+		s.Suffix = " Adding CODE_OF_CONDUCT.md..."
+		if err := createCodeOfConduct(); err != nil {
+			log.Printf("Failed to add CODE_OF_CONDUCT.md: %v\n", err)
 		}
 	}
 
