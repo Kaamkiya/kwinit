@@ -13,6 +13,7 @@ var languageList = []string{
 	"d",
 	"go",
 	"gradle",
+	"node/npm",
 	"zig",
 }
 
@@ -126,6 +127,8 @@ func createLanguageProject() error {
 			"--project-name",
 			gradleConfig.ProjectName,
 		)
+	case "node/npm":
+		cmd = exec.Command("npm", "init", "-y")
 	case "zig":
 		cmd = exec.Command("zig", "init")
 	case "Cancel.":
