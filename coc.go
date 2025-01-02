@@ -3,7 +3,7 @@ package main
 import (
 	"bytes"
 	"os"
-	
+
 	_ "embed"
 )
 

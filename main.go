@@ -36,7 +36,7 @@ var (
 	readmeAddBadges      bool
 
 	// Code of conduct variables.
-	addCOC bool
+	addCOC     bool
 	cocContact string
 
 	// Language project specific variables.
