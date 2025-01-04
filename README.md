@@ -43,7 +43,6 @@ If you found a bug, feel free to create and
 ## Roadmap
 
 - Project initialization for more systems
-  - NodeJS
   - Nim (nimble is the package manager)
   - C/C++ (all they really need is a Makefile)
   - Crystal
