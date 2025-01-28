@@ -147,7 +147,9 @@ func main() {
 	// Add CONTRIBUTING.md?
 	// Add CODE_OF_CONDUCT.md?
 	check(survey.AskOne(&survey.Confirm{Message: "Add CODE_OF_CONDUCT.md?"}, &addCOC))
-	check(survey.AskOne(&survey.Input{Message: "Method of contact for code of conduct?"}, &cocContact))
+	if addCOC {
+		check(survey.AskOne(&survey.Input{Message: "Method of contact for code of conduct?"}, &cocContact))
+	}
 
 	// Init language project?
 	check(survey.AskOne(&survey.Confirm{Message: "Init language project?"}, &initLanguage))
