@@ -135,8 +135,8 @@ func main() {
 		check(survey.AskOne(&survey.Input{Message: "Project description"}, &readmeDescription))
 		check(survey.AskOne(&survey.Input{Message: "Documentation URL (blank to skip)"}, &readmeDocsURL))
 		check(survey.AskOne(&survey.Input{Message: "Website (blank to skip)"}, &readmeWebsiteURL))
-		check(survey.AskOne(&survey.Input{Message: "Installation command? (blank to skip?)"}, &readmeInstallCommand))
-		check(survey.AskOne(&survey.Input{Message: "Usage command? (blank to skip?)"}, &readmeUsageCommand))
+		check(survey.AskOne(&survey.Input{Message: "Installation command? (blank to skip)"}, &readmeInstallCommand))
+		check(survey.AskOne(&survey.Input{Message: "Usage command? (blank to skip)"}, &readmeUsageCommand))
 		check(survey.AskOne(&survey.Confirm{Message: "Add badges to readme?"}, &readmeAddBadges))
 	}
 
