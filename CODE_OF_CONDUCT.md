@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: Unlicense -->
+
 # Contributor Covenant Code of Conduct
 
 ## Our Pledge

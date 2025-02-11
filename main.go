@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: Unlicense
 package main
 
 import (

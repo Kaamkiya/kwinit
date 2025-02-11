@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: Unlicense -->
+
 <h1 align=center>kwinit</h1>
 <p align=center>Quickstart all your projects with ease</p>
 

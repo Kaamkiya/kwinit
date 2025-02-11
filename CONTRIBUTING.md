@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: Unlicense -->
+
 # Contributing
 
 If you'd like to help out, this is the document for you to read before.

@@ -1,4 +1,5 @@
 #!/bin/sh
+# SPDX-License-Identifier: Unlicense
 
 echo "Building for linux amd64..."
 GOOS=linux GOARCH=amd64 go build -o kwinit-linux-amd64
